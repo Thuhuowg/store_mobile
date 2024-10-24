@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid p-0">
     <div class="layout fixed-top">
-        <header></header>
+        <Theheader></Theheader>
        
     </div>
     
@@ -48,12 +48,12 @@
 
 import Hello from '../components/client/Hello.vue'
 
-import header from '../components/layout/header.vue'
+import Theheader from '../components/layout/header.vue'
 import TheCategory from '../components/client/TheCategory.vue'
 import TheProductList from '../components/client/TheProductList.vue'
 export default {
     components:{
-        header,
+        Theheader,
         TheCategory,
         TheProductList
     }
