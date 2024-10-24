@@ -1,9 +1,11 @@
 <template>
     <div class="container-fluid p-0">
     <div class="layout fixed-top">
-        <HelloWorld></HelloWorld>
+        <header></header>
+       
     </div>
-        <div class="min-h-screen " >hdsgbagjn
+    
+        <div class="min-h-screen " >
             <router-view></router-view>
             <!-- <div class="">
                 <TheBannerRace></TheBannerRace>
@@ -26,18 +28,34 @@
                 <div>03</div>
             </div> -->
         </div>
+        
+        <!-- <TheProductList></TheProductList> -->
         <!-- <footer class="bg-light text-center py-5 ">
             <TheFooter></TheFooter>
         </footer> -->
+        
+    </div>
+      <div class="layout fixed-top1">
+        <TheCategory></TheCategory>
+       
+    </div>
+    <div class="layout fixed-top2">
+        <TheProductList></TheProductList>
+       
     </div>
 </template>
 <script>
 
 import Hello from '../components/client/Hello.vue'
-import HelloWorld from '../components/HelloWorld.vue'
+
+import header from '../components/layout/header.vue'
+import TheCategory from '../components/client/TheCategory.vue'
+import TheProductList from '../components/client/TheProductList.vue'
 export default {
     components:{
-        HelloWorld
+        header,
+        TheCategory,
+        TheProductList
     }
 }
 </script>
