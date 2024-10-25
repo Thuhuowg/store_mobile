@@ -9,10 +9,10 @@ const home = [
             {
                 path: "",
                 name: "client-home",
-                component: ()=>import("../components/client/TheBanner.vue")
+                component: ()=>import("../components/pages/TheHomePage.vue")
             },
             {
-                path: "",
+                path: "/product-detail",
                 name: "product-detail",
                 component:()=>import("../components/pages/Theproduct.vue")
             }

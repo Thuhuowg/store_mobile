@@ -3,7 +3,7 @@
 
             <div class="bootstrap-tabs product-tabs">
               <div class="tabs-header d-flex justify-content-between border-bottom my-5">
-                <h3>Trending Products</h3>
+                <h3>Tất cả sản phẩm</h3>
                 <nav>
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a href="#" class="nav-link text-uppercase fs-6 active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" aria-selected="true" role="tab">All</a>
@@ -20,7 +20,7 @@
                     <div class="col">
                       <div class="product-item">
                         <span class="badge bg-success position-absolute m-3">-30%</span>
-                        <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
+                        <a href="#" class="btn-wishlist"><svg width="24" height="24"><font-awesome-icon :icon="['far', 'heart']" /></svg></a>
                         <figure>
                           <a href="index.html" title="Product Title">
                             <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/42/329149/iphone-16-pro-max-titan-sa-mac-2-638638962343879149-750x500.jpg" class="tab-image">
@@ -29,22 +29,26 @@
                         <h3>IPhone 16 Pro Max</h3>
                         <span class="qty">Super Retina XDR</span><span class="rating"><svg width="24" height="24" class="text-primary"><use xlink:href="#star-solid"></use></svg> 6.9"</span>
                         
-                        <span class="price">34.990.000đ</span>
+                      
+                        <a href="#" class="btn btn-outline-primary me-1" style="font-size: 10px;">128 GB</a>
+                        <a href="#" class="btn btn-outline-primary me-1" style="font-size: 10px;">256 GB</a>
+                        <a href="#" class="btn btn-outline-primary" style="font-size: 10px;">1 TB</a>
+                        <span class="price mt-1">34.990.000đ</span>
                         <div class="d-flex align-items-center justify-content-between">
                           <div class="input-group product-qty">
                               <span class="input-group-btn">
                                   <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
-                                    <svg width="16" height="16"><use xlink:href="#minus"></use></svg>
+                                    <svg width="16" height="16"><font-awesome-icon :icon="['fas', 'minus']" /></svg>
                                   </button>
                               </span>
                               <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
                               <span class="input-group-btn">
                                   <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
-                                      <svg width="16" height="16"><use xlink:href="#plus"></use></svg>
+                                      <svg width="16" height="16"><font-awesome-icon :icon="['fas', 'plus']" /></svg>
                                   </button>
                               </span>
                           </div>
-                          <a href="#" class="nav-link">Add to Cart <iconify-icon icon="uil:shopping-cart"></iconify-icon></a>
+                          <a href="#" class="nav-link me-3 btn btn-outline-light"><svg width="28" height="26"><font-awesome-icon :icon="['fas', 'cart-plus']" /></svg></a>
                         </div>
                       </div>
                     </div>

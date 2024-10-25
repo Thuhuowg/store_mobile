@@ -5,7 +5,7 @@
        
     </div>
     
-        <div class="min-h-screen " >
+        <div class="min-h-screen me-5 ms-5" >
             <router-view></router-view>
             <!-- <div class="">
                 <TheBannerRace></TheBannerRace>
@@ -30,18 +30,12 @@
         </div>
         
         <!-- <TheProductList></TheProductList> -->
-        <!-- <footer class="bg-light text-center py-5 ">
+        <footer class="bg-light text-center ">
             <TheFooter></TheFooter>
-        </footer> -->
+        </footer>
         
-    </div>
-      <div class="layout fixed-top1">
-        <TheCategory></TheCategory>
-       
-    </div>
-    <div class="layout fixed-top2">
-        <TheProductList></TheProductList>
-       
+    
+   
     </div>
 </template>
 <script>
@@ -51,11 +45,13 @@ import Hello from '../components/client/Hello.vue'
 import Theheader from '../components/layout/header.vue'
 import TheCategory from '../components/client/TheCategory.vue'
 import TheProductList from '../components/client/TheProductList.vue'
+import TheFooter from '../components/layout/footer.vue'
 export default {
     components:{
         Theheader,
         TheCategory,
-        TheProductList
+        TheProductList,
+        TheFooter
     }
 }
 </script>
