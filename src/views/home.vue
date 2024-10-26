@@ -47,6 +47,10 @@
         <Theproduct></Theproduct>
        
     </div>
+    <div class="layout fixed-top4">
+        <TheCart></TheCart>
+       
+    </div>
 </template>
 <script>
 
@@ -56,12 +60,14 @@ import Theheader from '../components/layout/header.vue'
 import TheCategory from '../components/client/TheCategory.vue'
 import TheProductList from '../components/client/TheProductList.vue'
 import Theproduct from '../components/pages/Theproduct.vue'
+import TheCart from '../components/pages/TheCart.vue'
 export default {
     components:{
         Theheader,
         TheCategory,
         TheProductList,
-        Theproduct
+        Theproduct, 
+        TheCart
     }
 }
 </script>

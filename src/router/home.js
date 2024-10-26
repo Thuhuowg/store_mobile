@@ -15,6 +15,11 @@ const home = [
                 path: "/product-detail",
                 name: "product-detail",
                 component:()=>import("../components/pages/Theproduct.vue")
+            },
+            {
+                path: "/cart",
+                name: "cart",
+                component:()=>import("../components/pages/TheCart.vue")
             }
         ]
         
