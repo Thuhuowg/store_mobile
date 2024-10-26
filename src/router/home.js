@@ -12,7 +12,7 @@ const home = [
                 component: ()=>import("../components/client/TheBanner.vue")
             },
             {
-                path: "",
+                path: "/product-detail",
                 name: "product-detail",
                 component:()=>import("../components/pages/Theproduct.vue")
             }

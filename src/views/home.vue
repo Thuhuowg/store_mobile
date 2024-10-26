@@ -43,6 +43,10 @@
         <TheProductList></TheProductList>
        
     </div>
+    <div class="layout fixed-top3">
+        <Theproduct></Theproduct>
+       
+    </div>
 </template>
 <script>
 
@@ -51,11 +55,13 @@ import Hello from '../components/client/Hello.vue'
 import Theheader from '../components/layout/header.vue'
 import TheCategory from '../components/client/TheCategory.vue'
 import TheProductList from '../components/client/TheProductList.vue'
+import Theproduct from '../components/pages/Theproduct.vue'
 export default {
     components:{
         Theheader,
         TheCategory,
-        TheProductList
+        TheProductList,
+        Theproduct
     }
 }
 </script>
