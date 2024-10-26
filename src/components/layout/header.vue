@@ -26,7 +26,7 @@
                     <!-- Logo desktop -->
                     <a href="" class="logo">
                         <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu1Sye2rN_kyhDgnrIk-TDxI3kUcrlqFWrxA&s" alt="IMG-LOGO"> -->
-                        <img src="../../assets/logo-4ios-1.svg" width="80px" height="70px" alt="">
+                        <img src="../../assets/logo-4ios-1.svg" width="80px" height="70px" alt="" >
                     </a>
 
                     <!-- Menu desktop -->
