@@ -63,6 +63,11 @@
                         <span class="sub-item">Icon Menu</span>
                       </a>
                     </li>
+                     <li>
+                      <a href="">
+                        <span class="sub-item">Sidebar Style 2</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -95,11 +100,7 @@
                         <span class="sub-item">Panels</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Notifications</span>
-                      </a>
-                    </li>
+                  
                     <li>
                       <a href="">
                         <span class="sub-item">Sweet Alert</span>
