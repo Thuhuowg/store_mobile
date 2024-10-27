@@ -1,35 +1,36 @@
 <template>
-    
-
-<div class="container m-t-70">
+<div class=" m-t-90 margin-top-cus ms-0 me-0" >
   <div class="container">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-      <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-40 p-lr-0-lg">
+      <a href="/" class="stext-115 cl8 hov-cl1 trans-04">
         Trang chủ
-        <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        <!-- <font-awesome-icon :icon="['fas', 'greater-than']"  class="ms-1 me-2"/> -->
+        <span class="ms-1 me-2">></span>
       </a>
 
-      <span class="stext-109 cl4">Giỏ hàng</span>
+      <span class="stext-115 cl4">Giỏ hàng</span>
     </div>
   </div>
 
-  <form class="bg0 p-t-75 p-b-85">
-    <div class="container">
+  <form class="bg0 p-t-10 p-b-85">
+    <div class="">
       <div class="row">
-        <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+        <div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
           <div class="m-l-25 m-r--38 m-lr-0-xl">
             <div class="wrap-table-shopping-cart">
               <table class="table-shopping-cart">
+                <thead>
                 <tr class="table_head">
                   <th class="column-1">Hình ảnh</th>
                   <th class="column-2">Sản phẩm</th>
                   <th class="column-3">Giá</th>
-                  <th class="column-3">Size</th>
+                  <th class="column-2">Phân loại</th>
                   <th class="column-4">Số lượng</th>
                   <th class="column-5">Tổng</th>
                 </tr>
-
+</thead>
                 <!-- Repeat rows for each item -->
+                <tbody>
                 <tr class="table_row">
                   <td class="column-1">
                     <div class="how-itemcart1">
@@ -42,19 +43,19 @@
                   <td class="column-4">
                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                       <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                        <i class="fs-16 zmdi zmdi-minus"></i>
+                        <font-awesome-icon :icon="['fas', 'minus']" />
                       </div>
 
                       <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
 
                       <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                        <i class="fs-16 zmdi zmdi-plus"></i>
+                        <font-awesome-icon :icon="['fas', 'plus']" />
                       </div>
                     </div>
                   </td>
                   <td class="column-5 total">150,000Đ</td>
                 </tr>
-
+</tbody>
                 <!-- End repeat -->
               </table>
             </div>
@@ -69,7 +70,7 @@
           </div>
         </div>
 
-        <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+        <div class="col-sm-10 col-lg-7 col-xl-4 m-lr-auto m-b-50">
           <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
             <h4 class="mtext-109 cl2 p-b-30">Tổng giỏ hàng</h4>
 

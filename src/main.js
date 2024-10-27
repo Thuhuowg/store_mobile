@@ -4,14 +4,16 @@ import App from './App.vue'
 import { createRouter } from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-// import './style1.css';
-// import './helpers/import-vendor'
-// import '../src/helpers/import-vendor'
-import'./resources/css/main.css';
-import'./resources/css/util.css';
-import './resources/css/vendor.css';
-import './resources/css/normalize.css';
-import './resources/css/style.css';
+
+// import'./resources/css/main.css';
+// import'./resources/css/util.css';
+// import './resources/css/vendor.css';
+// import './resources/css/normalize.css';
+// import './resources/css/style.css';
+// import './resources/css/demo.css';
+// import './resources/css/plugins.css';
+// import './resources/css/kaiadmin.css';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'

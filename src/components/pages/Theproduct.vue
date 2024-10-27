@@ -5,6 +5,8 @@
   <div class="container pb-5">
     <div class="row">
       <div class="col-lg-7 mt-5">
+        <h4 class="mb-2">Điện thoại iPhone 16 Pro Max</h4>
+
         <div class="card mb-3">
           <img class="card-img img-fluid" src="https://cdn.tgdd.vn/Products/Images/42/329149/Slider/vi-vn-iphone-16-pro-max-thumbvideo.jpg" alt="Product image cap" id="product-detail">
         </div>
@@ -30,34 +32,38 @@
             </div>
           </div>
         </div>
+        
+        <div class="card mt-3"></div>
       </div>
 
       <div class="col-lg-5 mt-5 position-sticky fixed">
         <div class="card">
           <div class="card-body">
-            <h4>Điện thoại iPhone 16 Pro Max</h4>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <h6>Thương hiệu:</h6>
-              </li>
-              <li class="list-inline-item">
-                <p class="text-muted active"><a href="/"><strong>Anta</strong></a></p>
-              </li>
-            </ul>
-
-            <div class="row ml-2">
-              <p class="text-h3 py-2 text-danger"><strong>34.990.000</strong><small>đ</small></p>
-              <!-- <p class="ml-3 text-h3 py-2"><del>2,000,000<small>đ</small></del></p> -->
-            </div>
-
-            <p class="py-2">
+            <!-- <h4>Điện thoại iPhone 16 Pro Max</h4> -->
+             <div class="">
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+          </div>
+          <div class="">
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+            <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+          </div>
+          <p class="py-2">
               <i class="fa fa-star text-warning"></i>
               <i class="fa fa-star text-warning"></i>
               <i class="fa fa-star text-warning"></i>
               <i class="fa fa-star text-warning"></i>
               <i class="fa fa-star text-secondary"></i>
-              <span class="list-inline-item text-dark">Rating 4.8</span>
+              <span class="list-inline-item text-dark">Giá tại 4ios Store</span>
             </p>
+          <div class="row ml-2">
+              <p class="text-h3 py-2 "><strong>34.990.000</strong><small>đ</small></p>
+              <!-- <p class="ml-3 text-h3 py-2"><del>2,000,000<small>đ</small></del></p> -->
+            </div>
+
+            
 
             <div class="sale mb-3">
               <span class="title"><i class="zmdi zmdi-card-giftcard mr-1"></i>Khuyến mãi</span>
@@ -90,21 +96,21 @@
                     <div class="size-203 flex-c-m respon6">Số lượng</div>
                     <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                       <button type="button" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                        <i class="fs-16 zmdi zmdi-minus" id="minus"></i>
+                        <font-awesome-icon :icon="['fas', 'minus']" />
                       </button>
 
                       <input class="mtext-104 cl3 txt-center num-product" type="number" id="quantity" name="quantity" value="1">
 
                       <button type="button" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                        <i class="fs-16 zmdi zmdi-plus" id="plus"></i>
+                        <font-awesome-icon :icon="['fas', 'plus']" />
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div class="row mt-3">
-                  <button type="submit" class="btn btn-warning bor1 hov-btn1 p-lr-15 ml-5 trans-04">
-                    Add to cart
+                <div class="row mt-3 " style="width: 200px; margin: 0px auto;">
+                  <button type="submit" class="btn btn-warning bor1 hov-btn1 p-lr-15 ml-5 trans-04 mb-2">
+                   Thêm vào giỏ
                   </button>
                   <button type="button" class="btn btn-outline-danger bor1 hov-btn1 p-lr-15 ml-5 trans-04">
                     Mua ngay

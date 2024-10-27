@@ -1,31 +1,17 @@
 <template>
-    <section class="py-5" style="margin-top: 110px;">
+    <section class="py-5" style="margin-top: 130px;">
       <div class="container-fluid">
         <div class="row">
           
           <div class="col-md-6">
-            <div class="banner-ad bg-danger mb-3" style="background: url('images/ad-image-3.png');background-repeat: no-repeat;background-position: right bottom;">
-              <div class="banner-content p-5">
-
-                <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-                <h3 class="banner-title">Luxa Dark Chocolate</h3>
-                <p>Very tasty &amp; creamy vanilla flavour creamy muffins.</p>
-                <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
-
-              </div>
+            <div class="banner-ad bg-danger mb-3" style="background: url('https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/cf/3d/cf3d2057acbeac51ffc660da7dd79edd.png');background-repeat: no-repeat;background-position: right bottom;">
+              <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/cf/3d/cf3d2057acbeac51ffc660da7dd79edd.png" alt="">
             
             </div>
           </div>
           <div class="col-md-6">
-            <div class="banner-ad bg-info" style="background: url('images/ad-image-4.png');background-repeat: no-repeat;background-position: right bottom;">
-              <div class="banner-content p-5">
-
-                <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-                <h3 class="banner-title">Creamy Muffins</h3>
-                <p>Very tasty &amp; creamy vanilla flavour creamy muffins.</p>
-                <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
-
-              </div>
+            <div class="banner-ad bg-info" style="background: url('https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/5e/3b/5e3be8a90a516ad4eda2668d0d2feb55.png');background-repeat: no-repeat;background-position: right bottom;">
+             <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/5e/3b/5e3be8a90a516ad4eda2668d0d2feb55.png" alt="">
             
             </div>
           </div>

@@ -5,11 +5,12 @@ const home = [
         path: "",
         name: "home",
         component: ()=>import("../views/home.vue"),
+        // meta: { css:[ '../resources/css/main.css','../resources/css/util.css', '../resources/css/vendor.css', '../resources/css/normalize.css', '../resources/css/style.css'] },
         children: [
             {
                 path: "",
                 name: "client-home",
-                component: ()=>import("../components/client/TheBanner.vue")
+                component: ()=>import("../components/pages/TheHomePage.vue")
             },
             {
                 path: "/product-detail",

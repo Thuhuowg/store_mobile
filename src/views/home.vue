@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 m-t-150">
     <div class="layout fixed-top">
         <Theheader></Theheader>
        
     </div>
     
-        <div class="min-h-screen " >
+        <div class="min-h-screen me-5 ms-5" >
             <router-view></router-view>
             <!-- <div class="">
                 <TheBannerRace></TheBannerRace>
@@ -30,44 +30,66 @@
         </div>
         
         <!-- <TheProductList></TheProductList> -->
-        <!-- <footer class="bg-light text-center py-5 ">
+        <footer class="bg-light text-center ">
             <TheFooter></TheFooter>
-        </footer> -->
+        </footer>
         
-    </div>
-      <div class="layout fixed-top1">
-        <TheCategory></TheCategory>
-       
-    </div>
-    <div class="layout fixed-top2">
-        <TheProductList></TheProductList>
-       
-    </div>
-    <div class="layout fixed-top3">
-        <Theproduct></Theproduct>
-       
-    </div>
-    <div class="layout fixed-top4">
-        <TheCart></TheCart>
-       
+    
+   
     </div>
 </template>
 <script>
 
 import Hello from '../components/client/Hello.vue'
-
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import Theheader from '../components/layout/header.vue'
 import TheCategory from '../components/client/TheCategory.vue'
 import TheProductList from '../components/client/TheProductList.vue'
-import Theproduct from '../components/pages/Theproduct.vue'
-import TheCart from '../components/pages/TheCart.vue'
+import TheFooter from '../components/layout/footer.vue'
 export default {
     components:{
         Theheader,
         TheCategory,
         TheProductList,
-        Theproduct, 
-        TheCart
-    }
+        TheFooter
+    },
+//     setup() {
+//     const route = useRoute();
+
+//     onMounted(() => {
+        
+//        // Tải CSS mới từ meta
+//        const cssFiles = route.meta.css || [];
+//        console.log('Loading CSS files:', cssFiles);
+//       cssFiles.forEach(css => {
+//         const link = document.createElement('link');
+//         link.rel = 'stylesheet';
+//         link.href = css;
+//         link.onload = () => console.log(`Loaded: ${css}`); // Log khi CSS được tải
+//         link.onerror = () => console.error(`Failed to load: ${css}`); // Log khi có lỗi
+//         document.head.appendChild(link);
+//       });
+
+//       // Xóa CSS khi component bị hủy
+//       return () => {
+//         cssFiles.forEach(css => {
+//           const link = document.querySelector(`link[href="${css}"]`);
+//           if (link) {
+//             document.head.removeChild(link);
+//           }
+//         });
+//       };
+//     });
+//     return {};
+//   }
+   
 }
 </script>
+<style>
+@import '../resources/css/main.css';
+@import '../resources/css/util.css';
+@import '../resources/css/style.css';
+@import '../resources/css/normalize.css';
+@import '../resources/css/vendor.css';
+</style>
