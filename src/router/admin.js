@@ -26,6 +26,11 @@ const admins = [
                 component: () =>import("../components/forms/CreateProduct.vue")
             },
             {
+                path: "/admin/create-quantity/:product_id",
+                name:"admin-create-quantity",
+                component:() =>import("../components/forms/CreateProductDetail.vue")
+            },
+            {
                 path: "admin/update-product",
                 name:"admin-update-product",
                 component: () =>import("../components/forms/UpdateProduct.vue")

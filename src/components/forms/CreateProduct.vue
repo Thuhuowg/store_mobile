@@ -2,11 +2,16 @@
     <div class="ms-4 me-4 mt-4  ">
         <div class="row">
             <div class="col-1">
-                <a href="/riders">
+                <a href="/">
                     <font-awesome-icon :icon="['fas', 'arrow-left']" />
                 </a>
             </div>
             <h4 class="col">Thêm mới sản phẩm</h4>
+            <button class="col-sm-1 btn btn-secondary">
+                        <span class="btn-label">
+                          <i class="fa fa-plus"></i>
+                        </span>
+                      </button>
 
         </div>
         <form enctype="multipart/form-data" @submit.prevent="handleCreateProduct">
@@ -20,7 +25,8 @@
                             placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="">
-                        <div class="col form-group">
+                        <div class="row">
+                        <div class="col-sm-6 form-group ms-3">
                             <label class="form-label me-2">Hệ điều hành</label>
                             <div class="selectgroup selectgroup-pills">
                                 <label class="selectgroup-item">
@@ -34,6 +40,12 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="form-label me-2">Phiên bản</label>
+                            <input type="number"  @input="createString" class="col-sm-1 form-control" v-model="version" name="version"  placeholder="phiên bản" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <label  v-if="result" class="form-label me-2">{{ result }}</label>
+                        </div>
+                    </div>
                         <div class="col form-group">
                             <label class="form-label me-2">Hãng</label>
                             <div class="selectgroup selectgroup-pills">
@@ -85,9 +97,9 @@
                     <input type="text" v-model="cpu_chip" class="form-control" placeholder="Chip xử lý (CPU)"
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <input type="text" v-model="cpu_speed" aria-label="First name" class="form-control"
-                        placeholder="Chip đồ họa (GPU)">
-                    <input type="number" v-model="gpu_chip" aria-label="First name" class="form-control"
-                        placeholder="">
+                        placeholder="Tốc độ CPU">
+                    <input type="text" v-model="gpu_chip" aria-label="First name" class="form-control"
+                        placeholder="GPU chip">
                     <input type="text" v-model="contact" aria-label="First name" class="form-control"
                         placeholder="Danh bạ">
                 </div>
@@ -312,20 +324,7 @@
                 </div>
                 <div class="row">
                 <div class="col-sm-4">
-                    <div class="mb-3 pt-2">
-                        <label for="formFile" class="form-label d-flex">Ảnh đại diện</label>
-                        <input class="form-control" type="file" id="formFile" @change="onFileChange">
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-sm-4">
-                            <label class="imagecheck mb-4">
-                                <input name="imagecheck" type="checkbox" value="1" class="imagecheck-input">
-                                <figure class="imagecheck-figure">
-                                    <img src="../assets/img/examples/product1.jpg" alt="title" class="imagecheck-image">
-                                </figure>
-                            </label>
-                        </div>
-                    </div>
+                  
                 </div>
                 <div class="col-sm-6">
                     <div class="mb-3 pt-2">
@@ -364,7 +363,7 @@
 
             <div class="row mt-3" style="display: flex; justify-content: end; text-align: end;">
                 <div class="col-1 p-0 ms-5">
-                    <button class="btn btn-primary" type="submit">Tạo</button>
+                    <button class="btn btn-primary" type="submit">Tiếp</button>
                 </div>
                 <div class="col-1 ">
                     <a href="/riders">
@@ -379,205 +378,221 @@
 <script>
 import axios from 'axios';
 import { ref, onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router'; // Import useRouter từ vue-router
 
 export default {
-  setup() {
-    const select_feature = ref([]);
-    const select_camera = ref([]);
-    const selectRearCam = ref([]);
-    const featureCam = ref([]);
-    const opera_system = ref('');
-    const product_name = ref('');
-    const cpu_speed = ref('');
-    const cpu_chip = ref('');
-    const gpu_chip = ref('');
-    const ram = ref(null);
-    const contact = ref('');
-    const rear_cam_solution = ref('');
-    const rear_cam_film = ref('');
-    const rear_cam_flash = ref('');
-    const front_cam_feature = ref('');
-    const rear_cam_feature = ref('');
-    const front_cam_solution = ref('');
-    const capture = ref('');
-    const screen_resolution = ref('');
-    const screen_width = ref('');
-    const max_light = ref('');
-    const touchscreen_glass = ref('');
-    const capacity_battery = ref('');
-    const type_battery = ref('');
-    const support_charge = ref('');
-    const advance_security = ref('');
-    const water_dust = ref('');
-    const record = ref('');
-    const mobile_network = ref('');
-    const sim = ref('');
-    const bluetooth = ref('');
-    const port_charge = ref('');
-    const jack = ref('');
-    const design = ref('');
-    const material = ref('');
-    const size = ref('');
-    const debut = ref('');
-    const category_id = ref(null);
+    setup() {
+        const product_name = ref('');
+        const select_feature = ref([]);
+        const select_camera = ref([]);
+        const selectRearCam = ref([]);
+        const featureCam = ref([]);
+        const opera_system = ref('IOS');
 
-    const updateRearCamFilm = (value, isChecked) => {
-      if (isChecked) {
-        rear_cam_film.value += rear_cam_film.value ? `, ${value}` : value;
-      } else {
-        rear_cam_film.value = rear_cam_film.value
-          .split(', ')
-          .filter(cam => cam !== value)
-          .join(', ');
-      }
+        const cpu_speed = ref('');
+        const cpu_chip = ref('');
+        const gpu_chip = ref('');
+        const ram = ref(null);
+        const contact = ref('');
+        const rear_cam_solution = ref('');
+        const rear_cam_film = ref('');
+        const rear_cam_flash = ref('');
+        const front_cam_feature = ref('');
+        const rear_cam_feature = ref('');
+        const front_cam_solution = ref('');
+        const capture = ref('');
+        const screen_resolution = ref('');
+        const screen_width = ref('');
+        const max_light = ref('');
+        const touchscreen_glass = ref('');
+        const capacity_battery = ref('');
+        const type_battery = ref('');
+        const support_charge = ref('');
+        const advance_security = ref('');
+        const water_dust = ref('');
+        const record = ref('');
+        const mobile_network = ref('');
+        const sim = ref('');
+        const bluetooth = ref('');
+        const port_charge = ref('');
+        const jack = ref('');
+        const design = ref('');
+        const material = ref('');
+        const size = ref('');
+        const debut = ref('');
+        const category_id = ref(null);
+        const version = ref('');
+        const result = ref('');
+
+        const router = useRouter(); 
+
+        const createString = () => {
+      result.value = `${opera_system.value} ${version.value}`;
     };
+        const updateRearCamFilm = (value, isChecked) => {
+            if (isChecked) {
+                rear_cam_film.value += rear_cam_film.value ? `, ${value}` : value;
+            } else {
+                rear_cam_film.value = rear_cam_film.value
+                    .split(', ')
+                    .filter(cam => cam !== value)
+                    .join(', ');
+            }
+        };
 
-    const handleCreateProduct = async () => {
-      const formData = new FormData();
-      // Tạo đối tượng sản phẩm
-      formData.append('product_name', product_name.value),
-      formData.append('opera_system', opera_system.value);
-      formData.append('cpu_chip', cpu_chip.value);
-      formData.append('gpu_chip', gpu_chip.value);
-      formData.append('cpu_speed', cpu_speed.value);
-      formData.append('ram', Number(ram.value));
-      formData.append('contact', contact.value);
-      formData.append('rear_cam_solution', rear_cam_solution.value);
-      formData.append('rear_cam_film', rear_cam_film.value);
-      formData.append('rear_cam_flash', rear_cam_flash.value);
-      formData.append('front_cam_feature', front_cam_feature.value);
-      formData.append('rear_cam_feature', rear_cam_feature.value);
-      formData.append('front_cam_solution', front_cam_solution.value);
-      formData.append('capture', capture.value);
-      formData.append('screen_resolution', screen_resolution.value);
-      formData.append('screen_width', screen_width.value);
-      formData.append('max_light', max_light.value);
-      formData.append('touchscreen_glass', touchscreen_glass.value);
-      formData.append('capacity_battery', capacity_battery.value);
-      formData.append('type_battery', type_battery.value);
-      formData.append('support_charge', support_charge.value);
-      formData.append('advance_security', advance_security.value);
-      formData.append('water_dust', water_dust.value);
-      formData.append('record', record.value);
-      formData.append('mobile_network', mobile_network.value);
-      formData.append('sim', sim.value);
-      formData.append('bluetooth', bluetooth.value);
-      formData.append('port_charge', port_charge.value);
-      formData.append('jack', jack.value);
-      formData.append('design', design.value);
-      formData.append('material', material.value);
-      formData.append('size', size.value);
-      formData.append('debut', debut.value);
-      formData.append('category_id', Number(category_id.value));
-      console.log('product_name:', formData.get('product_name'));
-      console.log('jaksfhkajhfkjhas',formData)
+        const handleCreateProduct = async () => {
+            const productData = {
+                product_name: product_name.value,
+                opera_system: result.value,
+                cpu_chip: cpu_chip.value,
+                gpu_chip: gpu_chip.value,
+                cpu_speed: cpu_speed.value,
+                ram: Number(ram.value),
+                contact: contact.value,
+                rear_cam_solution: rear_cam_solution.value,
+                rear_cam_film: rear_cam_film.value,
+                rear_cam_flash: rear_cam_flash.value,
+                front_cam_feature: front_cam_feature.value,
+                rear_cam_feature: rear_cam_feature.value,
+                front_cam_solution: front_cam_solution.value,
+                capture: capture.value,
+                screen_resolution: screen_resolution.value,
+                screen_width: screen_width.value,
+                max_light: max_light.value,
+                touchscreen_glass: touchscreen_glass.value,
+                capacity_battery: capacity_battery.value,
+                type_battery: type_battery.value,
+                support_charge: support_charge.value,
+                advance_security: advance_security.value,
+                water_dust: water_dust.value,
+                record: record.value,
+                mobile_network: mobile_network.value,
+                sim: sim.value,
+                bluetooth: bluetooth.value,
+                port_charge: port_charge.value,
+                jack: jack.value,
+                design: design.value,
+                material: material.value,
+                size: size.value,
+                debut: debut.value,
+                category_id: Number(category_id.value),
+            };
 
-console.log('Tên sản phẩmgfgj:', product_name.value);
 
-      const apiURL = 'http://localhost:3000/products/create';
-      try {
-        const response = await axios.post(apiURL, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+
+            const apiURL = 'http://localhost:3000/products/create';
+            try {
+                const response = await axios.post(apiURL, productData, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                console.log('------response.data-----', response.data)
+                if (response.status === 200) {
+                    console.log('------response.data-----', response.data)
+                    console.log('=====product_id-----', response.data)
+                    router.push({ name: 'admin-create-quantity', params: { product_id: response.data.data.id } });                   } else {
+                    alert('Đã xảy ra lỗi');
+                }
+
+                // apiURL = `http://localhost:3000/products/create-quantity/${response.data.id}`
+                // const productCreated = await axios.get(apiURL,)
+                // this
+            } catch (error) {
+                alert('Đã xảy ra lỗi');
+                console.log(error);
+            }
+        };
+
+        const fetchCamera = async () => {
+            const apiURL = 'http://localhost:3000/products/attribute/camera';
+            try {
+                const response = await axios.get(apiURL);
+                select_camera.value = response.data;
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu từ API:', error);
+            }
+        };
+
+        const fetchFeature = async () => {
+            const apiURL = 'http://localhost:3000/products/attribute/feature';
+            try {
+                const response = await axios.get(apiURL);
+                select_feature.value = response.data;
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu từ API:', error);
+            }
+        };
+
+        watch(selectRearCam, (newVal) => {
+            rear_cam_film.value = newVal.join(', ');
         });
-        console.log('------response.data-----',response.data)
-        if (response.status === 200) {
-          console.log('------response.data-----',response.data)
-          alert('Tạo sản phẩm thành công');
-        } else {
-          alert('Đã xảy ra lỗi');
-        }
-      } catch (error) {
-        alert('Đã xảy ra lỗi');
-        console.log(error);
-      }
-    };
 
-    const fetchCamera = async () => {
-      const apiURL = 'http://localhost:3000/products/attribute/camera';
-      try {
-        const response = await axios.get(apiURL);
-        select_camera.value = response.data;
-      } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ API:', error);
-      }
-    };
+        watch(featureCam, (newVal) => {
+            rear_cam_feature.value = newVal.join(', ');
+        });
 
-    const fetchFeature = async () => {
-      const apiURL = 'http://localhost:3000/products/attribute/feature';
-      try {
-        const response = await axios.get(apiURL);
-        select_feature.value = response.data;
-      } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ API:', error);
-      }
-    };
+        watch(opera_system, (newValue) => {
+            createString()
+            console.log('Giá trị hệ điều hành đã thay đổi:', newValue);
+        });
 
-    watch(selectRearCam, (newVal) => {
-      rear_cam_film.value = newVal.join(', ');
-    });
+        watch(category_id, (newValue) => {
+            console.log('Giá trị category_id đã thay đổi:', newValue);
+        });
 
-    watch(featureCam, (newVal) => {
-      rear_cam_feature.value = newVal.join(', ');
-    });
+        onMounted(() => {
+            fetchCamera();
+            fetchFeature();
+            createString()
+        });
 
-    watch(opera_system, (newValue) => {
-      console.log('Giá trị hệ điều hành đã thay đổi:', newValue);
-    });
-
-    watch(category_id, (newValue) => {
-      console.log('Giá trị category_id đã thay đổi:', newValue);
-    });
-
-    onMounted(() => {
-      fetchCamera();
-      fetchFeature();
-    });
-
-    return {
-      handleCreateProduct,
-      select_camera,
-      select_feature,
-      updateRearCamFilm,
-      selectRearCam,
-      featureCam,
-      opera_system,
-      product_name,
-      cpu_speed,
-      cpu_chip,
-      gpu_chip,
-      ram,
-      contact,
-      rear_cam_solution,
-      rear_cam_film,
-      rear_cam_flash,
-      front_cam_feature,
-      rear_cam_feature,
-      front_cam_solution,
-      capture,
-      screen_resolution,
-      screen_width,
-      max_light,
-      touchscreen_glass,
-      capacity_battery,
-      type_battery,
-      support_charge,
-      advance_security,
-      water_dust,
-      record,
-      mobile_network,
-      sim,
-      bluetooth,
-      port_charge,
-      jack,
-      design,
-      material,
-      size,
-      debut,
-      category_id,
-    };
-  },
+        return {
+            handleCreateProduct,
+            select_camera,
+            select_feature,
+            updateRearCamFilm,
+            selectRearCam,
+            featureCam,
+            opera_system,
+            product_name,
+            cpu_speed,
+            cpu_chip,
+            gpu_chip,
+            ram,
+            contact,
+            rear_cam_solution,
+            rear_cam_film,
+            rear_cam_flash,
+            front_cam_feature,
+            rear_cam_feature,
+            front_cam_solution,
+            capture,
+            screen_resolution,
+            screen_width,
+            max_light,
+            touchscreen_glass,
+            capacity_battery,
+            type_battery,
+            support_charge,
+            advance_security,
+            water_dust,
+            record,
+            mobile_network,
+            sim,
+            bluetooth,
+            port_charge,
+            jack,
+            design,
+            material,
+            size,
+            debut,
+            category_id,
+            version,
+      result,
+      createString,
+        };
+    },
 };
 </script>
 
