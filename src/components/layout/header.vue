@@ -126,9 +126,9 @@
                                         <span class=" ms-2">Tài khoản</span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
-                                        <li><a class="dropdown-item" href="#">Đăng kí</a></li>
-                                        <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                                        <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
+                                        <li><a class="dropdown-item" href="/register">Đăng kí</a></li>
+                                        <!-- <li><a class="dropdown-item" href="#">Đăng xuất</a></li> -->
                                     </ul>
                                 </div>
                                 <!-- @endauth

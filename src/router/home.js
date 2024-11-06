@@ -13,6 +13,16 @@ const home = [
                 component: ()=>import("../components/pages/TheHomePage.vue")
             },
             {
+                path:"/login",
+                name: "login",
+                component: ()=>import("../components/TheLogin.vue")
+            },
+            {
+                path:"/register",
+                name:"register",
+                component: ()=>import("../components/TheRegister.vue")
+            },
+            {
                 path: "/product-detail/:product_id",
                 name: "product-detail",
                 component:()=>import("../components/pages/Theproduct.vue")

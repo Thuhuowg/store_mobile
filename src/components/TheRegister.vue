@@ -1,15 +1,15 @@
 <template>
-    <div class="login-container bg-white">
-      <div class="form-card">
+    <div class="login-container pt-5 mt-5 bg-white">
+      <div class="form-card mt-5">
         <div class="tabs">
           <button :class="{'active': tab === 'register'}" @click="tab = 'register'; goToTab('register')">REGISTER</button>
           <button :class="{'active': tab === 'login'}" @click="tab = 'login'; goToTab('login')">LOGIN</button>
         </div>
   
-        <!-- <div class="social-login">
+        <div class="social-login">
           <button class="btn fb-login">Continue with Facebook</button>
           <button class="btn apple-login">Continue with Apple</button>
-        </div> -->
+        </div>
   
         <form @submit.prevent="handleLogin">
           <div class="form-fields" v-if="tab === 'login'">
@@ -174,9 +174,9 @@ import { useRouter } from 'vue-router';
       };
     }
   };
-  </script> 
+  </script>
   
- <style>
+  <!-- <style>
 .login-container {
   display: flex;
   flex-direction: column;
@@ -274,5 +274,5 @@ a {
   text-align: center;
   color: white;
 }
-  </style>
+  </style> -->
   

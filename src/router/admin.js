@@ -3,7 +3,7 @@ const admins = [
         path: "/admin",
         name: "admin-layout",
         component: ()=> import("../views/dashboard.vue"),
-        // meta: { css:[ '../resources/css/demo.css','../resources/css/plugins.css', '../resources/css/kaiadmin.css'] },
+        meta: { requiresAuth: true, requiredRoles: [1] },
         children: [
             {
                 path: "/admin",

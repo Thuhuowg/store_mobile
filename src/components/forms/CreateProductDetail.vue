@@ -33,6 +33,11 @@
                 <span class="selectgroup-button">256 gb</span>
               </label>
               <label class="selectgroup-item">
+                <input type="radio" name="available_capacity" v-model="available_capacity" :value="512"
+                  class="selectgroup-input">
+                <span class="selectgroup-button">512 GB</span>
+              </label>
+              <label class="selectgroup-item">
                 <input type="radio" name="available_capacity" v-model="available_capacity" :value="1"
                   class="selectgroup-input">
                 <span class="selectgroup-button">1 TB</span>
