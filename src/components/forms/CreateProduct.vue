@@ -50,20 +50,20 @@
                             <label class="form-label me-2">Hãng</label>
                             <div class="selectgroup selectgroup-pills">
                                 <label class="selectgroup-item">
-                                    <input type="radio" name="category_id" v-model="category_id" value="1" class="selectgroup-input"
+                                    <input type="radio" name="category_id" v-model="category_id" value="2" class="selectgroup-input"
                                         checked="">
                                     <span class="selectgroup-button">APPLE</span>
                                 </label>
                                 <label class="selectgroup-item">
-                                    <input type="radio" name="category_id" v-model="category_id" value="2" class="selectgroup-input">
+                                    <input type="radio" name="category_id" v-model="category_id" value="3" class="selectgroup-input">
                                     <span class="selectgroup-button">SAMSUNG</span>
                                 </label>
                                 <label class="selectgroup-item">
-                                    <input type="radio" name="category_id" v-model="category_id" value="4" class="selectgroup-input">
+                                    <input type="radio" name="category_id" v-model="category_id" value="5" class="selectgroup-input">
                                     <span class="selectgroup-button">OPPO</span>
                                 </label>
                                 <label class="selectgroup-item">
-                                    <input type="radio" name="category_id" v-model="category_id" value="3" class="selectgroup-input">
+                                    <input type="radio" name="category_id" v-model="category_id" value="4" class="selectgroup-input">
                                     <span class="selectgroup-button">XIAOMI</span>
                                 </label>
                             </div>
@@ -326,38 +326,7 @@
                 <div class="col-sm-4">
                   
                 </div>
-                <div class="col-sm-6">
-                    <div class="mb-3 pt-2">
-                        <label for="formFile" class="form-label d-flex">Ảnh sp</label>
-                        <input class="form-control" type="file" id="formFile" @change="onFileChange">
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-sm-4">
-                            <label class="imagecheck mb-4">
-                                <input name="imagecheck" type="checkbox" value="1" class="imagecheck-input">
-                                <figure class="imagecheck-figure">
-                                    <img src="../assets/img/examples/product1.jpg" alt="title" class="imagecheck-image">
-                                </figure>
-                            </label>
-                        </div>
-                        <div class="col-6 col-sm-4">
-                            <label class="imagecheck mb-4">
-                                <input name="imagecheck" type="checkbox" value="2" class="imagecheck-input" checked="">
-                                <figure class="imagecheck-figure">
-                                    <img src="../assets/img/examples/product4.jpg" alt="title" class="imagecheck-image">
-                                </figure>
-                            </label>
-                        </div>
-                        <div class="col-6 col-sm-4">
-                            <label class="imagecheck mb-4">
-                                <input name="imagecheck" type="checkbox" value="3" class="imagecheck-input">
-                                <figure class="imagecheck-figure">
-                                    <img src="../assets/img/examples/product3.jpg" alt="title" class="imagecheck-image">
-                                </figure>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
             </div>
 
@@ -366,7 +335,7 @@
                     <button class="btn btn-primary" type="submit">Tiếp</button>
                 </div>
                 <div class="col-1 ">
-                    <a href="/riders">
+                    <a href="">
                         <button type="button" class="btn btn-outline-secondary">Huỷ</button>
                     </a>
 
@@ -490,7 +459,7 @@ export default {
                 console.log('------response.data-----', response.data)
                 if (response.status === 200) {
                     console.log('------response.data-----', response.data)
-                    console.log('=====product_id-----', response.data)
+                    console.log('=====product_id-----', response)
                     router.push({ name: 'admin-create-quantity', params: { product_id: response.data.data.id } });                   } else {
                     alert('Đã xảy ra lỗi');
                 }

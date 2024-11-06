@@ -43,7 +43,7 @@
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
                 </span>
-                <h4 class="text-section">Components</h4>
+                <h4 class="text-section">Profile</h4>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
@@ -55,19 +55,15 @@
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="">
-                        <span class="sub-item">Sidebar Style 2</span>
+                        <span class="sub-item">Thông tin cá nhân</span>
                       </a>
                     </li>
                     <li>
                       <a href="">
-                        <span class="sub-item">Icon Menu</span>
+                        <span class="sub-item">Thêm thông tin người dùng</span>
                       </a>
                     </li>
-                     <li>
-                      <a href="">
-                        <span class="sub-item">Sidebar Style 2</span>
-                      </a>
-                    </li>
+                     
                   </ul>
                 </div>
               </li>
@@ -81,44 +77,8 @@
                 <div class="collapse" id="base">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="">
-                        <span class="sub-item">Avatars</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Buttons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Grid System</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Panels</span>
-                      </a>
-                    </li>
-                  
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Sweet Alert</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Font Awesome Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Simple Line Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="sub-item">Typography</span>
+                      <a href="/admin/create-product">
+                        <span class="sub-item">Thêm sản phẩm</span>
                       </a>
                     </li>
                   </ul>
@@ -145,7 +105,7 @@
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
                 </span>
-                <h4 class="text-section">Components</h4>
+                <h4 class="text-section">Thống kê</h4>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">

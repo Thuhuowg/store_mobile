@@ -13,7 +13,7 @@ const home = [
                 component: ()=>import("../components/pages/TheHomePage.vue")
             },
             {
-                path: "/product-detail",
+                path: "/product-detail/:product_id",
                 name: "product-detail",
                 component:()=>import("../components/pages/Theproduct.vue")
             },

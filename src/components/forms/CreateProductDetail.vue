@@ -85,7 +85,7 @@
               </div>
               <div class="col-auto">
                 <label class="colorinput">
-                  <input name="color" v-model="color" type="radio" value="danger" class="colorinput-input">
+                  <input name="color" v-model="color" type="radio" value="đỏ" class="colorinput-input">
                   <span class="colorinput-color bg-danger"></span>
                 </label>
               </div>
@@ -203,11 +203,11 @@
             <div class="mb-3 pt-3">
               <label for="formFile" class="form-label d-flex">Ảnh sp</label>
               <input class="form-control" type="file" multiple id="product_images" @change="onFilesChange">
-              <div v-if="product_images.length">
+              <!-- <div v-if="product_images.length">
       <div v-for="(image, index) in product_images" :key="index">
         <img :src="getImageUrl(image)" alt="Selected Image" style="max-width: 300px; max-height: 300px; margin: 10px;" />
       </div>
-    </div>
+    </div> -->
             </div>
            
           </div>
@@ -246,7 +246,7 @@
 
 
         <div class="row">
-          <div class="col-sm-8">
+          <!-- <div class="col-sm-8">
             <div class="mb-3 pt-2">
               <label for="formFile" class="form-label d-flex">Ảnh sp</label>
               <input class="form-control" type="file" multiple id="product_images" @change="onFilesChange">
@@ -279,7 +279,7 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 

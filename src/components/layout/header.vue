@@ -90,7 +90,7 @@
                         <div class="">
                             <div class="wrap-icon-header flex-w flex-r-m">
 
-                                <a href="">
+                                <a href="/cart">
                                     <div class=" cl2 hov-cl1  p-l-22 p-r-11" data-notify="2" id="cart">
                                         <font-awesome-icon :icon="['fas', 'cart-shopping']" />
                                         <span class=" ms-2">Giỏ hàng</span>

@@ -1,15 +1,13 @@
 <template>
-
-
   <section class="bg-white m-t-100">
-    <div class="container pb-5">
+    <div v-if="product" class="container pb-5">
       <div class="row">
         <div class="col-lg-7 mt-5">
-          <h4 class="mb-2">Điện thoại iPhone 16 Pro Max</h4>
+          <h4 class="mb-4">{{ product.product_name }}</h4>
 
           <div class="card mb-3">
             <img class="card-img img-fluid"
-              src="https://cdn.tgdd.vn/Products/Images/42/329149/Slider/vi-vn-iphone-16-pro-max-thumbvideo.jpg"
+              src="https://cdn.tgdd.vn/Products/Images/42/240259/iphone-14-den-glr-1-750x500.jpg"
               alt="Product image cap" id="product-detail">
           </div>
           <input type="hidden" id="idProduct" value="1">
@@ -44,23 +42,23 @@
         </div>
 
         <div class="col-lg-5 mt-5 position-sticky fixed">
-          <div class="card">
+          <div class="card mt-5">
             <div class="card-body">
-              <!-- <h4>Điện thoại iPhone 16 Pro Max</h4> -->
+              <h4 class="mb-2">{{ product.product_name }}</h4>
               <div class="">
                 <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
-                <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
-                <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">128 GB</a>
+                <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">256 GB</a>
+                <a href="#" class="btn btn-outline-primary me-1" style="font-size:10px;">512 GB</a>
               </div>
               <div class="row mt-3 ">
                 <div class="col-auto p-1 ps-3"><label class="colorinput"><input name="color" type="radio"
                       class="colorinput-input " value="đen"><span class="colorinput-color bg-black"
                       data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></span></label></div>
                       <div class="col-auto p-1"><label class="colorinput"><input name="color" type="radio"
-                      class="colorinput-input" value="đen"><span class="colorinput-color bg-black"
+                      class="colorinput-input" value="đen"><span class="colorinput-color bg-white"
                       data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></span></label></div>
                       <div class="col-auto p-1"><label class="colorinput"><input name="color" type="radio"
-                      class="colorinput-input" value="đen"><span class="colorinput-color bg-black"
+                      class="colorinput-input" value="đen"><span class="colorinput-color bg-danger"
                       data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></span></label></div>
                 
               </div>
@@ -95,30 +93,25 @@
               <form action="/add-to-cart" method="post">
                 <input type="hidden" name="product_id" value="1">
                 <div class="p-t-33">
-                  <div class="flex-w flex-r-m p-b-10">
-                    <div class="size-203 flex-c-m respon6">Số đo</div>
-                    <div class="size-204 respon6-next">
-                      <select class="js-select2" name="size_id">
-                        <option value="0">Vui lòng chọn kích thước</option>
-                        <option value="1">38</option>
-                        <option value="2" disabled>39</option>
-                        <option value="3">40</option>
-                      </select>
-                    </div>
-                  </div>
 
                   <div class="flex-w flex-r-m p-b-10">
                     <div class="col size-204 flex-w flex-m respon6-next">
                       <div class="size-203 flex-c-m respon6">Số lượng</div>
                       <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                        <button type="button" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                        <button type="button" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" @click="decreaseQuantity">
                           <font-awesome-icon :icon="['fas', 'minus']" />
                         </button>
 
-                        <input class="mtext-104 cl3 txt-center num-product" type="number" id="quantity" name="quantity"
-                          value="1">
+                        <input 
+          class="mtext-104 cl3 txt-center num-product" 
+          type="number" 
+          id="quantity" 
+          name="quantity"
+          v-model="quantity" 
+          :min="1"  
+        />
 
-                        <button type="button" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                        <button type="button" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" @click="increaseQuantity">
                           <font-awesome-icon :icon="['fas', 'plus']" />
                         </button>
                       </div>
@@ -186,3 +179,44 @@
   opacity: 0; }
 
 </style>
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      product:null, 
+      quantity: 1
+    };
+  },
+
+  mounted() {
+    this.fetchProductData();
+  },
+
+  methods: {
+    async fetchProductData() {
+      const product_id = this.$route.params.product_id; // Lấy rider_code từ route params
+      const apiURL = `http://localhost:3000/products/product-detail/${product_id}`; // API sử dụng rider_code
+console.log(this.$route.params.product_id)
+      try {
+        const response = await axios.get(apiURL);
+        this.product = response.data; // Gán dữ liệu vào rider
+        console.log('kahgla====', this.product.product_name)
+      } catch (error) {
+        console.error('Lỗi khi lấy dữ liệu sp:', error);
+      }
+    },
+    decreaseQuantity() {
+      if (this.quantity > 1) {  // Đảm bảo số lượng không giảm dưới 1
+        this.quantity--;
+      }
+    },
+    
+    // Tăng số lượng
+    increaseQuantity() {
+      this.quantity++;
+    }
+  },
+};
+</script>
