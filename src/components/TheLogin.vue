@@ -2,8 +2,8 @@
     <div class="login-container bg-white">
       <div class="form-card">
         <div class="tabs">
-          <button :class="{'active': tab === 'register'}" @click="tab = 'register'; goToTab('register')">REGISTER</button>
-          <button :class="{'active': tab === 'login'}" @click="tab = 'login'; goToTab('login')">LOGIN</button>
+          <button :class="{'active': tab === 'register'}" @click="tab = 'register'; goToTab('register')">Đăng ký</button>
+          <button :class="{'active': tab === 'login'}" @click="tab = 'login'; goToTab('login')">Đăng nhập</button>
         </div>
   
         <!-- <div class="social-login">
@@ -13,29 +13,29 @@
   
         <form @submit.prevent="handleLogin">
           <div class="form-fields" v-if="tab === 'login'">
-            <input type="email" v-model="email" placeholder="Email" />
+            <input type="email" v-model="email" placeholder="Nhập email..." />
             <div class="password-field">
               <input 
                 :type="showPassword ? 'text' : 'password'" 
                 v-model="password" 
-                placeholder="Password" 
+                placeholder="Nhập mật khẩu..." 
               />
               <span class="input-group-text mb-2 ms-1" id="basic-addon2" @click="togglePassword">{{ showPassword ? 'hide' : 'show' }}</span>
             </div>
-            <a href="#">Forgot password?</a>
+            <a href="#">Quên mật khẩu?</a>
             <button type="submit" class="btn login-btn">Login</button>
           </div>
         </form>
 
         <form @submit.prevent="handleRegister">
           <div class="form-fields" v-if="tab === 'register'">
-            <input type="text" v-model="username" placeholder="Username" />
-            <input type="email" v-model="email" placeholder="Email" />
+            <input type="text" v-model="username" placeholder="Nhập tên người dùng..." />
+            <input type="email" v-model="email" placeholder="Nhập email..." />
             <div class="password-field">
               <input 
                 :type="showPassword ? 'text' : 'password'" 
                 v-model="password" 
-                placeholder="Password" 
+                placeholder="Nhập mật khẩu..." 
               />
               <span class="input-group-text mb-2 ms-1" id="basic-addon2" @click="togglePassword">{{ showPassword ? 'hide' : 'show' }}</span>
             </div>
@@ -43,7 +43,7 @@
               <input 
                 :type="showPasswordConfirm ? 'text' : 'password'" 
                 v-model="passwordConfirm" 
-                placeholder="Confirm Password" 
+                placeholder="Xác nhận mật khẩu" 
               />
               <span class="input-group-text mb-2 ms-1" id="basic-addon2" @click="togglePasswordConfirm">{{ showPasswordConfirm ? 'hide' : 'show' }}</span>
             </div>
@@ -100,7 +100,7 @@ import { useRouter } from 'vue-router';
       
     };
       const handleLogin = async() => {
-        // Xử lý đăng nhập ở đây
+        // Xử lý đăng Nhập ở đây
         console.log('Logging in with:', email.value, password.value);
         const apiURL = 'http://localhost:3000/auth/login';
         try {
@@ -142,7 +142,7 @@ import { useRouter } from 'vue-router';
     alert('username must be at least 3 characters long!');
     return;
   }
-        const apiURL = 'http://localhost:3000/users/create';
+        const apiURL = 'http://localhost:3000/user/create';
         try {
           const response = await axios.post(apiURL, {
           username: username.value,

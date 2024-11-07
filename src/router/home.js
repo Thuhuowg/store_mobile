@@ -18,9 +18,9 @@ const home = [
                 component: ()=>import("../components/TheLogin.vue")
             },
             {
-                path:"/register",
-                name:"register",
-                component: ()=>import("../components/TheRegister.vue")
+                path:"register",
+                name: "register",
+                component: ()=>import("../components/TheLogin.vue"),
             },
             {
                 path: "/product-detail/:product_id",
@@ -28,7 +28,12 @@ const home = [
                 component:()=>import("../components/pages/Theproduct.vue")
             },
             {
-                path: "/cart",
+                path: "/payment/:order_code",
+                name: "payment",
+                component: ()=>import("../components/client/Payment.vue")
+            },
+            {
+                path: "/cart/:order_code",
                 name: "cart",
                 component:()=>import("../components/pages/TheCart.vue")
             }

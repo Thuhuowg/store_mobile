@@ -34,12 +34,12 @@
                 <tr class="table_row">
                   <td class="column-1">
                     <div class="how-itemcart1">
-                      <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/42/329149/iphone-16-pro-max-titan-sa-mac-1-638638962337813406-750x500.jpg" alt="IMG">
+                      <img v-if="order" :src="imageUrl(order.product_image_avatar)" alt="IMG">
                     </div>
                   </td>
-                  <td class="column-2">Tên sản phẩm</td>
-                  <td class="column-3">150,000Đ</td>
-                  <td class="column-3">M</td>
+                  <td v-if="order" class="column-2">{{ order.product_name }}</td>
+                  <td v-if="order" class="column-3">{{ formatCurrency(order.price) }}</td>
+                  <td v-if="order" class="column-3">{{ order.available_capacity }} GB - {{ order.color }}</td>
                   <td class="column-4">
                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                       <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -53,7 +53,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="column-5 total">150,000Đ</td>
+                  <td v-if="order" class="column-5 total">{{ order.order_price }}</td>
                 </tr>
 </tbody>
                 <!-- End repeat -->
@@ -80,7 +80,7 @@
               </div>
 
               <div class="size-209">
-                <span class="mtext-110 cl2" id="total">450,000Đ</span>
+                <span v-if="order" class="mtext-110 cl2" id="total">{{ order.order_price }}</span>
               </div>
             </div>
 
@@ -94,7 +94,10 @@
               </div>
             </div>
 
-            <a href="/order/checkout" class="flex-c-m stext-101 cl0 mt-3 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+            <!-- <router-link  v-if="order" :to="{ name: 'cart', params: { cart: order.order_code } }" class="flex-c-m stext-101 cl0 mt-3 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+              Thanh toán
+            </router-link> -->
+            <a  v-if="order" :href="'/payment/' + order.order_code" class="flex-c-m stext-101 cl0 mt-3 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
               Thanh toán
             </a>
           </div>
@@ -104,7 +107,6 @@
   </form>
 
   <div style="text-align: center">
-    <h3>Bạn không có sản phẩm nào trong giỏ hàng</h3>
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
       <path d="...SVG path here..."></path>
     </svg>
@@ -114,3 +116,86 @@
   </div>
 </div>
 </template>
+<script>
+  export default {
+    name: 'CheckoutPage',
+    data() {
+      return {
+        order:null
+      };
+    },
+    mounted() {
+        // Khởi tạo Stripe và Stripe Elements khi component được moun
+    this.getOrder()
+    },
+   methods: {
+    formatCurrency(value) {
+    if (typeof value === 'number') {
+      console.log('kkkkkk')
+      return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    }
+    return 'Chưa có giá';  // Trường hợp giá trị không hợp lệ
+  },
+    
+    async getOrder() {
+      const order_data = this.$route.params.order_code
+      const apiURL = `http://localhost:3000/orders/${order_data}`;
+      try {
+                const response = await axios.get(apiURL);
+                this.order = response.data;
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu từ API:', error);
+            }
+    },
+    // Method to calculate the total price of the order, including shipping if applicable
+    calculateTotal() {
+      const shippingFee = this.calculateShippingFee(); // Assume we have a method to calculate shipping
+     
+    },
+  
+    // Method to calculate the shipping fee (this can be customized based on different criteria)
+    calculateShippingFee() {
+      // For simplicity, we're assuming free shipping (0Đ)
+      return 0; // Or replace with logic to calculate the shipping fee
+    },
+  
+    // Method to handle form submission
+    handleSubmit() {
+      // You can add form validation and submission logic here
+      console.log('Form Data Submitted:', this.formData);
+      // Here you would typically send the formData to the backend API
+    },
+    async createPaymentIntent() {
+      // Gọi API server để tạo PaymentIntent và nhận clientSecret
+      const response = await this.$http.post('/api/stripe/create-payment-intent', {
+        amount: 1000, // 1000 cent = 10 USD
+        currency: 'usd',
+      });
+      return response;
+    },
+    decreaseQuantity() {
+      if (this.quantity > 1) {
+        this.product_quantity_order--;
+      }
+    },
+
+    increaseQuantity() {
+      this.product_quantity_order++;
+    },
+    
+  },
+  computed: {
+    imageUrl(imageName) {
+      return (imageName) => {
+        // Kiểm tra nếu imageName là chuỗi trước khi tạo URL
+        if (typeof imageName === 'string') {
+          return `http://localhost:3000/uploads/${imageName}`;
+        } else {
+          console.error('imageName phải là chuỗi', imageName);
+          return '';
+        }
+      };
+    },
+  }
+  }
+  </script>

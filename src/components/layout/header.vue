@@ -30,7 +30,7 @@
                     </a>
 
                     <!-- Menu desktop -->
-                    <div class="search-width">
+                    <div class="search-width mt-5">
                         <div class="">
                             <div class="search-bar row bg-light p-2 my-2 ms-5 rounded-4" >
                                 <div class="col col-md-10">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu-desktop ">
+                        <div class="menu-desktop pb-3">
                             <ul class="p-0 main-menu text-6xl ms-5" style="font-weight: 600;">
                                 <li class="active-menu">
                                     <a href="">Trang chủ</a>
@@ -72,7 +72,7 @@
                     </div>
                     <!-- Icon header -->
 
-                    <div class="search-width ">
+                    <div class="search-width mt-5 ">
                         <div class="search-bar mt-0 row p-1 my-2 ms-5 rounded-4" style="background-color: rgba(113, 242, 156, 0.4); ">
                             <div class="col col-md-10">
                                 <form id="search-form" class="text-center" action="index.html" method="post">
@@ -126,8 +126,29 @@
                                         <span class=" ms-2">Tài khoản</span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
-                                        <li><a class="dropdown-item" href="/register">Đăng kí</a></li>
+                                        <div v-if="!check_token" class="d-flex col-sm justify-content-sm-end gap-2 service-user" style="margin-right: 20px;">
+      <li>
+      <router-link :to="{ name: 'login' }" style="text-decoration: none; color: #fff; margin: 0;">
+        <div class="col-sm-1">Đăng nhập</div>
+      </router-link>
+    </li>
+    <li>
+      <router-link :to="{ name: 'register' }" style="text-decoration: none; color: #fff; margin: 0;">
+        <div class="col-sm-1">Đăng ký</div>
+      </router-link>
+    </li>
+      </div>
+      <div v-if="check_token" class="d-flex col-sm justify-content-sm-end gap-2 service-user" style="margin-right: 20px;">
+        <li>
+            <div class="col-sm-1" style="white-space: nowrap;">{{ userName }}</div>
+
+        </li>
+      <li>
+        <div @click="handleLogout" class="col-sm-1" style="cursor: pointer; white-space: nowrap;">Đăng xuất</div>
+
+      </li>
+
+  </div>
                                         <!-- <li><a class="dropdown-item" href="#">Đăng xuất</a></li> -->
                                     </ul>
                                 </div>
@@ -144,4 +165,48 @@
 
     </header>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      check_token: false,
+      userName: '' // Khai báo biến tên người dùng
+    };
+  },
+  methods: {
+    async fetchUserProfile() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const response = await fetch('http://localhost:3000/user/profile', {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          console.log('mmmmm',response)
+          if (response.ok) {
+            const userData = await response.json();
+            console.log(userData)
+            this.userName = userData.name; // Lấy tên người dùng từ response
+            this.check_token = true; // Đánh dấu đã xác thực
+          } else {
+            this.check_token = false; // Nếu token không hợp lệ
+          }
+        } catch (error) {
+          console.error('Lỗi khi lấy thông tin người dùng:', error);
+        }
+      }
+    },
+    handleLogout() {
+      localStorage.removeItem('token'); // Xóa token
+      this.check_token = false; // Đánh dấu chưa xác thực
+      this.userName = ''; // Reset tên người dùng
+     // Chuyển hướng về trang đăng nhập
+    }
+  },
+  mounted() {
+    this.fetchUserProfile(); // Gọi hàm khi component được mounted
+  }
+}
+</script>

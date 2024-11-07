@@ -42,7 +42,9 @@
                                     <svg width="16" height="16"><font-awesome-icon :icon="['fas', 'minus']" /></svg>
                                   </button>
                               </span>
-                              <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
+                              <form action="">
+                                                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" v-model="product_quantity_order">
+                              </form>
                               <span class="input-group-btn">
                                   <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
                                       <svg width="16" height="16"><font-awesome-icon :icon="['fas', 'plus']" /></svg>
